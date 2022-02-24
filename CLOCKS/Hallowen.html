@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CC-LVW</title>
+  <div class="navbar">
+  
+    <div class="dropdown">
+      <button class="dropbtn">Change Clock
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="NeonCock.html">Neon</a>
+        <a href="RegurlarClock.html">Regurlar</a>
+        <a href="HomeClock.html">Home Style</a>
+        <a href="MinecraftClock.html">Minecraft</a>
+       <a href="NorseClock.html">Norse</a>
+       <a href="OldClock.html">Old Clock</a>
+       <a href="Glitch.html">Glitch </a>
+       <a href="DeathPlague.html">Plague</a>
+       <a href="Christmass.html">Christmas</a>
+       <a href="Hallowen.html">Halloween</a>
+       
+      </div>
+    </div> 
+  </div>
+  
+  <style>
+@font-face {
+    font-family: Minecraft;
+    src: url(Halloween.ttf);
+}
+
+    body {
+     
+      font-family: Minecraft;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color:#424558;
+     
+    }
+
+    .clock {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    
+    font-size: 10px;
+    font-family: Minecraft;
+   
+    }
+
+    .time {
+      font-size: 80px;
+      font-weight: bold;
+      color: green;
+      font-family: Minecraft;
+    }
+
+    .date-time {
+      font-size: 20px;
+      color: lawngreen;
+      font-family: Minecraft;
+    }
+
+    @media screen and (max-width: 768px) {
+      .time {
+        font-size: 50px;
+      }
+    }
+    @keyframes pulsate {
+        100% {
+            text-shadow: greenyellow;
+        }
+        0% {
+            text-shadow: green;
+        }
+    }
+    
+    h1,
+    h2 {
+        text-align: center;
+        font-weight: 400;
+        line-height: 1;
+    }
+    
+    h1 {
+        font-size: 6.2rem;
+        animation: pulsate 0.11s ease-in-out infinite alternate;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .container {
+        margin-top: 20vh;
+    }
+    
+  </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="neonText">
+            <div class="clock">
+                <div class="time"></div>
+                <div class="date-time"></div>
+                <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+              </div>
+            </h1>
+
+    </div>
+  
+
+  <script>
+    var time = document.querySelector(".time");
+    var dateTime = document.querySelector(".date-time");
+
+    function updateClock() {
+      // Get the current time, day , month and year
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var day = now.getDay();
+      var date = now.getDate();
+      var month = now.getMonth();
+      var year = now.getFullYear();
+
+      // store day and month name in an array
+      var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      // format date and time
+      hours = hours % 12 || 12;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      date = date < 10 ? "0" + date : date;
+
+      // display date and time
+      var period = hours < 12 ? "PM" : "AM";
+      time.innerHTML = hours + ":" + minutes + ":" + seconds + " " + period;
+      dateTime.innerHTML = dayNames[day] + ", " + monthNames[month] + " " + date + ", " + year;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    function Change(color) {
+            context.strokeStyle = color;
+            context.fillStyle = color;
+        }
+  </script>
+
+<style>
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  .dropdown .dropbtn {
+    font-size: 16px;  
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+  }
+  
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  </style>
+</body>
+
+</html>
